@@ -13,4 +13,10 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <None Update="data/tableauPOC.twb" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="data/sampleData.xlsx" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+
 </Project>

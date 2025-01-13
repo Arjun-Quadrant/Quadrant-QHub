@@ -1,67 +1,59 @@
-﻿using TableauConverter.Services;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using OfficeOpenXml;
 
 class Program
 {
-    static void Main(string[] args)
-    {
+    static void Main(string[] args) {
+
         string inputXmlPath = "data/tableauPOC.twb";
-        string outputDirectory = "tableau_analysis";
+        string outputDirectory = @"C:\Users\ArjunNarendra(Quadra\OneDrive - Quadrant Resource LLC\Tableau Accelerator\TableauConverter\Tableau Analysis";
         Directory.CreateDirectory(outputDirectory);
 
-
-
-
-
-
-        // Column Information
-
-
-
+        // Step 1: Column Information
         var columnExtractor = new TableauColumnExtractor();
         var columns = columnExtractor.ExtractDataSourceColumns(inputXmlPath);
         SaveToJson(columns, Path.Combine(outputDirectory, "columns_info.json"));
         Console.WriteLine("Column information extracted");
 
-        // Visualization Mapping
+        // Step 2: Visualization Mapping
         var vizMapper = new TableauVisualizationMapper();
-        var visualizationMapping = vizMapper.MapVisualizationsToDataSources(inputXmlPath);
+        var visualizationMapping = vizMapper.MapWorksheetToDataSourceColumns(inputXmlPath);
         SaveToJson(visualizationMapping, Path.Combine(outputDirectory, "visualization_mapping.json"));
         Console.WriteLine("Visualization mapping completed");
 
+        // Step 3: Map used columns to the data they contain
+        var dataSourceExtractor = new TableauDataSourceExtractor();
+        var dataSourceInfo = dataSourceExtractor.ExtractDataSourceInfo(inputXmlPath);
 
-        // Get the column names from your visualization mapping
-                    var dataSourceExtractor = new TableauDataSourceExtractor();
-            var dataSourceInfo = dataSourceExtractor.ExtractDataSourceInfo(inputXmlPath);
+        if (dataSourceInfo != null && !string.IsNullOrEmpty(dataSourceInfo.FilePath)) {
+            var columnNames = visualizationMapping.Values
+                .SelectMany(v => v.UsedColumns)
+                .Distinct()
+                .ToList();
+            var extractedData = dataSourceExtractor.ExtractData(dataSourceInfo, columnNames);
+            SaveToJson(extractedData, Path.Combine(outputDirectory, "extracted_data.json"));
+            Console.WriteLine("Column to data mapping completed.");
+        } else {
+            Console.WriteLine("Data source information could not be extracted.");
+        }
 
-            if (dataSourceInfo != null && !string.IsNullOrEmpty(dataSourceInfo.FilePath))
-            {
-                var columnNames = visualizationMapping.Values
-                    .SelectMany(v => v.UsedColumns)
-                    .Distinct()
-                    .ToList();
-
-                var extractedData = dataSourceExtractor.ExtractData(dataSourceInfo, columnNames);
-                SaveToJson(extractedData, Path.Combine(outputDirectory, "extracted_data.json"));
-            }
-            else
-            {
-                Console.WriteLine("Data source information could not be extracted.");
-            }
-        // Column Usage
+        // Step 4: Column Usage
         var columnUsage = columnExtractor.ExtractColumnUsage(inputXmlPath);
         SaveToJson(columnUsage, Path.Combine(outputDirectory, "column_usage.json"));
         Console.WriteLine("Column usage analysis completed");
-        var dataExtractor = new TableauDataValueExtractor();
+
+        var dataExtractor = new TableauDataSourceExtractor();
+        // These are hardcoded in. Is there a better way to do this?
         var numericColumns = new List<string> { "[Sales]", "[Discounts]", "[Profit]", "[Units Sold]",
             "[Manufacturing Price]", "[Gross Sales]" };
-
-        var columnValues = dataExtractor.ExtractNumericValues("path/to/Sample data.xlsx", numericColumns);
-        SaveToJson(columnValues, Path.Combine(outputDirectory, "column_values.json"));
-
+        // Step 5: Map numeric columns to the data they contain
+        if (dataSourceInfo != null) {
+            var columnValues = dataExtractor.ExtractNumericValues(dataSourceInfo.FilePath, numericColumns);
+            SaveToJson(columnValues, Path.Combine(outputDirectory, "column_values.json"));
+        }
+        Console.WriteLine("Numeric column to data mapping completed.");
         Console.WriteLine($"\nAll analyses complete. Results saved in {outputDirectory}");
     }
-
 
     private static void SaveToJson<T>(T data, string filePath)
     {
@@ -75,5 +67,3 @@ class Program
         File.WriteAllText(filePath, jsonOutput);
     }
 }
-
-
