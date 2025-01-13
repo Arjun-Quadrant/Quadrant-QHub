@@ -21,7 +21,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='Sample data' name='excel-direct.0l6d6r912rusvb12lz3181hjh2pz'>
-            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='Data/01xwe9z00mbw9k15t4n4x1lvhomv/Sample data.xlsx' interpretationMode='0' validate='no' />
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='Data/01xwe9z00mbw9k15t4n4x1lvhomv/sampleData.xlsx' interpretationMode='0' validate='no' />
           </named-connection>
         </named-connections>
         <relation connection='excel-direct.0l6d6r912rusvb12lz3181hjh2pz' name='Sheet1' table='[Sheet1$]' type='table'>

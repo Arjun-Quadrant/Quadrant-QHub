@@ -2,39 +2,30 @@ using System.Xml.Linq;
 
 public class TableauColumnExtractor
 {
-    public List<DataSourceColumn> ExtractDataSourceColumns(string twbFilePath)
+    public Dictionary<string, string> ExtractDataSourceColumns(string twbFilePath)
 {
-    var columns = new List<DataSourceColumn>();
+    var columns = new Dictionary<string, string>();
     XDocument doc = XDocument.Load(twbFilePath);
     
     var datasource = doc.Descendants("datasource").First();
-    var columnElements = datasource.Descendants("column");
+    var columnList = datasource.Descendants("columns");
+    var columnElements = columnList.Descendants("column");
     
-    foreach (var column in columnElements)
-    {
-        var dataSourceColumn = new DataSourceColumn
-        {
-            Name = column.Attribute("name")?.Value,
-            Caption = column.Attribute("caption")?.Value,
-            DataType = column.Attribute("datatype")?.Value,
-            Role = column.Attribute("role")?.Value,
-            Type = column.Attribute("type")?.Value,
-            AggregationType = column.Attribute("aggregation")?.Value
-        };
-        columns.Add(dataSourceColumn);
+    foreach (var column in columnElements) {
+        var name = column.Attribute("name")?.Value;
+        var datatype = column.Attribute("datatype")?.Value;
+        if (name != null && datatype != null) {
+            columns.TryAdd(name, datatype);
+        }
     }
-
     return columns;
 }
 
 public class DataSourceColumn
 {
     public string Name { get; set; }
-    public string Caption { get; set; }
     public string DataType { get; set; }
-    public string Role { get; set; }
-    public string Type { get; set; }
-    public string AggregationType { get; set; }
+
 }
 
      public List<ColumnUsage> GetColumnDetailsForSheet(string twbFilePath, string sheetName, string columnName)

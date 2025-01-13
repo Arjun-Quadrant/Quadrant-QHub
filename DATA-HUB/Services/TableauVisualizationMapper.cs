@@ -7,7 +7,7 @@ using System.Linq;
 
 public class TableauVisualizationMapper
 {
-    public Dictionary<string, VisualizationSource> MapVisualizationsToDataSources(string twbFilePath)
+    public Dictionary<string, VisualizationSource> MapWorksheetToDataSourceColumns(string twbFilePath)
     {
         var mapping = new Dictionary<string, VisualizationSource>();
         XDocument doc = XDocument.Load(twbFilePath);
@@ -28,7 +28,6 @@ public class TableauVisualizationMapper
                 UsedColumns = GetUsedColumns(worksheet)
             };
         }
-        
         return mapping;
     }
 

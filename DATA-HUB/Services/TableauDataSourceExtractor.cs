@@ -2,9 +2,6 @@ using System;
 using System.Xml.Linq;
 using System.Data.SqlClient;
 using OfficeOpenXml;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
 
 public class TableauDataSourceExtractor
 {
@@ -21,7 +18,8 @@ public class TableauDataSourceExtractor
             return new DataSourceInfo
             {
                 Type = "Excel",
-                FilePath = excelConnection?.Attribute("filename")?.Value,
+                // File must be accessed at a local destination in order for ExcelPackage to work
+                FilePath = @"C:\Users\ArjunNarendra(Quadra\sampleData.xlsx",
                 ConnectionDetails = GetConnectionDetails(doc)
             };
         }
@@ -55,14 +53,13 @@ public class TableauDataSourceExtractor
     {
         var data = new Dictionary<string, List<object>>();
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
         try
         {
             string fullPath = Path.GetFullPath(filePath);
             Console.WriteLine($"Attempting to read Excel file: {fullPath}");
 
-            using var package = new ExcelPackage(new FileInfo(fullPath));
-            
+            using var package = new ExcelPackage(fullPath);
+
             if (package.Workbook.Worksheets.Count == 0)
             {
                 Console.WriteLine("Excel file contains no worksheets");
@@ -86,18 +83,7 @@ public class TableauDataSourceExtractor
                 data[col] = new List<object>();
             }
 
-            // Map headers
-            var headerIndices = new Dictionary<string, int>();
-            for (int col = 1; col <= colCount; col++)
-            {
-                var cellValue = worksheet.Cells[1, col].Text;
-                var header = $"[{cellValue}]";
-                if (columnNames.Contains(header))
-                {
-                    headerIndices[header] = col;
-                    Console.WriteLine($"Found column: {header} at position {col}");
-                }
-            }
+            var headerIndices = MapHeaderToColumn(colCount, columnNames, worksheet);
 
             // Extract data
             for (int row = 2; row <= rowCount; row++)
@@ -108,8 +94,6 @@ public class TableauDataSourceExtractor
                     data[header.Key].Add(value);
                 }
             }
-
-            Console.WriteLine($"Successfully extracted {rowCount - 1} rows of data");
         }
         catch (Exception ex)
         {
@@ -117,6 +101,56 @@ public class TableauDataSourceExtractor
         }
 
         return data;
+    }
+
+    public Dictionary<string, List<decimal>> ExtractNumericValues(string excelPath, List<string> columnNames)
+    {
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+        var data = new Dictionary<string, List<decimal>>();
+
+        using (var package = new ExcelPackage(new FileInfo(excelPath)))
+        {
+            var worksheet = package.Workbook.Worksheets[0];
+            var rowCount = worksheet.Dimension.Rows;
+            var colCount = worksheet.Dimension.Columns;
+
+            // Initialize columns
+            foreach (var col in columnNames)
+            {
+                data[col] = new List<decimal>();
+            }
+
+            var headerIndices = MapHeaderToColumn(colCount, columnNames, worksheet);
+
+            // Extract data
+            for (int row = 2; row <= rowCount; row++)
+            {
+                foreach (var header in headerIndices)
+                {
+                    var cellValue = worksheet.Cells[row, header.Value].Value;
+                    if (decimal.TryParse(cellValue?.ToString(), out decimal numValue))
+                    {
+                        data[$"{header.Key}"].Add(numValue);
+                    }
+                }
+            }
+        }
+
+        return data;
+    }
+
+    private Dictionary<string, int> MapHeaderToColumn(int colCount, List<String> columnNames, ExcelWorksheet worksheet) {
+        var headerIndices = new Dictionary<string, int>();
+        for (int col = 1; col <= colCount; col++)
+        {
+            var cellValue = worksheet.Cells[1, col].Text;
+            var header = $"[{cellValue}]";
+            if (columnNames.Contains(header))
+            {
+                headerIndices[header] = col;
+            }
+        }
+        return headerIndices;
     }
 
     private Dictionary<string, List<object>> ExtractFromSql(string connectionString, List<string> columnNames)
@@ -154,12 +188,6 @@ public class TableauDataSourceExtractor
         }
 
         return data;
-    }
-
-    public string GetExcelFilePath(string twbFilePath)
-    {
-        var dataSourceInfo = ExtractDataSourceInfo(twbFilePath);
-        return dataSourceInfo?.FilePath;
     }
 }
 
