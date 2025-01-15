@@ -6,7 +6,7 @@ class Program
     static void Main(string[] args) {
 
         string inputXmlPath = "data/tableauPOC.twb";
-        string outputDirectory = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\Tableau Analysis";
+        string outputDirectory = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\Tableau Analysis\DATA-HUB";
         Directory.CreateDirectory(outputDirectory);
 
         // Step 1: Column Information
