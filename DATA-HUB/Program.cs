@@ -2,7 +2,7 @@
 {
     static void Main(string[] args) {
         // Define file paths for the Tableau workbook and output files
-        string filePath = @"Data/Test SQL.twb"; // Path to the Tableau workbook file (adjust as needed)
+        string filePath = @"Data/multiple datasources.twb"; // Path to the Tableau workbook file (adjust as needed)
         string connectionInfoJsonFilePath = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\connection info.json"; // Path for saving connection info in JSON format
         string connectionInfoExcelFilePath = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\connection info.xlsx"; // Path for saving connection info in Excel format
         string visualizationInfoJsonFilePath = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\visualization info.json"; // Path for saving visualization metadata in JSON format

@@ -15,7 +15,6 @@ public class TableauVisualizationInfoExtractor
         var xmlDoc = LoadXmlDocument(filePath);
         var worksheets = GetWorksheetElements(xmlDoc);
         foreach (var worksheet in worksheets) {
-            VisualizationInfo visualizationInfo = new VisualizationInfo();
             var worksheetName = GetWorksheetName(worksheet);
             var visualizationTitle = GetVisualizationTitle(worksheet);
             var visualizationType = GetVisualizationType(worksheet);
@@ -41,11 +40,21 @@ public class TableauVisualizationInfoExtractor
     }
     
     private string GetVisualizationTitle(XElement worksheet) {
+        var title = worksheet.Descendants("run").FirstOrDefault();
+        if (title == null) {
+            return "No Title";
+        }
         return worksheet.Descendants("run").FirstOrDefault().Value;
     }
 
     private string GetVisualizationType(XElement worksheet) {
-        return worksheet.Descendants("mark").FirstOrDefault().Attribute("class").Value;
+        var vizExists = worksheet.Descendants("datasource").FirstOrDefault();
+        Console.WriteLine(vizExists);
+        if (vizExists == null) {
+            return "No Visualization";
+        } else {
+            return worksheet.Descendants("mark").FirstOrDefault().Attribute("class").Value;
+        }
     }
 
     public void SaveVisualizationInfoToJSONAndExcel(List<VisualizationInfo> visualizationInfoList, string jsonFilePath, string excelFilePath) {
