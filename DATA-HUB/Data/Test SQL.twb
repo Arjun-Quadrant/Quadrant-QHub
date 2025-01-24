@@ -1,0 +1,573 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1211.0901                               -->
+<workbook original-version='18.1' source-build='2024.3.2 (20243.24.1211.0901)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='BuyingGroups (Sales.BuyingGroups)+ (WideWorldImporters-Standard)' inline='true' name='federated.0ymx4d61l0ozvf0zysift1rg7fe6' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='ARJUNS-LAPTOP\SQLEXPRESS' name='sqlserver.0229exw0itokju1c7qmi40ggzzcz'>
+            <connection authentication='sspi' class='sqlserver' dbname='WideWorldImporters-Standard' minimum-driver-version='SQL Server Native Client 10.0' odbc-native-protocol='yes' one-time-sql='' server='ARJUNS-LAPTOP\SQLEXPRESS' sslmode='require' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='sqlserver.0229exw0itokju1c7qmi40ggzzcz' name='BuyingGroups' table='[Sales].[BuyingGroups]' type='table' />
+          <relation connection='sqlserver.0229exw0itokju1c7qmi40ggzzcz' name='StockItemHoldings' table='[Warehouse].[StockItemHoldings]' type='table' />
+        </relation>
+        <cols>
+          <map key='[BinLocation]' value='[StockItemHoldings].[BinLocation]' />
+          <map key='[BuyingGroupID]' value='[BuyingGroups].[BuyingGroupID]' />
+          <map key='[BuyingGroupName]' value='[BuyingGroups].[BuyingGroupName]' />
+          <map key='[LastCostPrice]' value='[StockItemHoldings].[LastCostPrice]' />
+          <map key='[LastEditedBy (StockItemHoldings)]' value='[StockItemHoldings].[LastEditedBy]' />
+          <map key='[LastEditedBy]' value='[BuyingGroups].[LastEditedBy]' />
+          <map key='[LastEditedWhen]' value='[StockItemHoldings].[LastEditedWhen]' />
+          <map key='[LastStocktakeQuantity]' value='[StockItemHoldings].[LastStocktakeQuantity]' />
+          <map key='[QuantityOnHand]' value='[StockItemHoldings].[QuantityOnHand]' />
+          <map key='[ReorderLevel]' value='[StockItemHoldings].[ReorderLevel]' />
+          <map key='[StockItemID]' value='[StockItemHoldings].[StockItemID]' />
+          <map key='[TargetStockLevel]' value='[StockItemHoldings].[TargetStockLevel]' />
+          <map key='[ValidFrom]' value='[BuyingGroups].[ValidFrom]' />
+          <map key='[ValidTo]' value='[BuyingGroups].[ValidTo]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>BuyingGroupID</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[BuyingGroupID]</local-name>
+            <parent-name>[BuyingGroups]</parent-name>
+            <remote-alias>BuyingGroupID</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <object-id>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>BuyingGroupName</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[BuyingGroupName]</local-name>
+            <parent-name>[BuyingGroups]</parent-name>
+            <remote-alias>BuyingGroupName</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LastEditedBy</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[LastEditedBy]</local-name>
+            <parent-name>[BuyingGroups]</parent-name>
+            <remote-alias>LastEditedBy</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <object-id>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ValidFrom</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[ValidFrom]</local-name>
+            <parent-name>[BuyingGroups]</parent-name>
+            <remote-alias>ValidFrom</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='boolean' name='TypeIsDateTime2'>true</attribute>
+              <attribute datatype='boolean' name='TypeIsDateTime2orDate'>true</attribute>
+            </attributes>
+            <object-id>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ValidTo</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[ValidTo]</local-name>
+            <parent-name>[BuyingGroups]</parent-name>
+            <remote-alias>ValidTo</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='boolean' name='TypeIsDateTime2'>true</attribute>
+              <attribute datatype='boolean' name='TypeIsDateTime2orDate'>true</attribute>
+            </attributes>
+            <object-id>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>StockItemID</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[StockItemID]</local-name>
+            <parent-name>[StockItemHoldings]</parent-name>
+            <remote-alias>StockItemID</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>QuantityOnHand</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[QuantityOnHand]</local-name>
+            <parent-name>[StockItemHoldings]</parent-name>
+            <remote-alias>QuantityOnHand</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>BinLocation</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[BinLocation]</local-name>
+            <parent-name>[StockItemHoldings]</parent-name>
+            <remote-alias>BinLocation</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>20</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LastStocktakeQuantity</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[LastStocktakeQuantity]</local-name>
+            <parent-name>[StockItemHoldings]</parent-name>
+            <remote-alias>LastStocktakeQuantity</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LastCostPrice</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[LastCostPrice]</local-name>
+            <parent-name>[StockItemHoldings]</parent-name>
+            <remote-alias>LastCostPrice</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>18</precision>
+            <scale>2</scale>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ReorderLevel</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[ReorderLevel]</local-name>
+            <parent-name>[StockItemHoldings]</parent-name>
+            <remote-alias>ReorderLevel</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TargetStockLevel</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[TargetStockLevel]</local-name>
+            <parent-name>[StockItemHoldings]</parent-name>
+            <remote-alias>TargetStockLevel</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LastEditedBy</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[LastEditedBy (StockItemHoldings)]</local-name>
+            <parent-name>[StockItemHoldings]</parent-name>
+            <remote-alias>LastEditedBy</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LastEditedWhen</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[LastEditedWhen]</local-name>
+            <parent-name>[StockItemHoldings]</parent-name>
+            <remote-alias>LastEditedWhen</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='boolean' name='TypeIsDateTime2'>true</attribute>
+              <attribute datatype='boolean' name='TypeIsDateTime2orDate'>true</attribute>
+            </attributes>
+            <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Bin Location' datatype='string' name='[BinLocation]' role='dimension' type='nominal' />
+      <column caption='Buying Group ID' datatype='integer' name='[BuyingGroupID]' role='dimension' type='ordinal' />
+      <column caption='Buying Group Name' datatype='string' name='[BuyingGroupName]' role='dimension' type='nominal' />
+      <column caption='Last Cost Price' datatype='real' name='[LastCostPrice]' role='measure' type='quantitative' />
+      <column aggregation='Sum' datatype='integer' name='[LastEditedBy (StockItemHoldings)]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Last Edited By' datatype='integer' name='[LastEditedBy]' role='dimension' type='ordinal' />
+      <column caption='Last Edited When' datatype='datetime' name='[LastEditedWhen]' role='dimension' type='ordinal' />
+      <column caption='Last Stocktake Quantity' datatype='integer' name='[LastStocktakeQuantity]' role='measure' type='quantitative' />
+      <column caption='Quantity On Hand' datatype='integer' name='[QuantityOnHand]' role='measure' type='quantitative' />
+      <column caption='Reorder Level' datatype='integer' name='[ReorderLevel]' role='measure' type='quantitative' />
+      <column aggregation='Sum' caption='Stock Item ID' datatype='integer' name='[StockItemID]' role='dimension' type='ordinal' />
+      <column caption='Target Stock Level' datatype='integer' name='[TargetStockLevel]' role='measure' type='quantitative' />
+      <column caption='Valid From' datatype='datetime' name='[ValidFrom]' role='dimension' type='ordinal' />
+      <column caption='Valid To' datatype='datetime' name='[ValidTo]' role='dimension' type='ordinal' />
+      <column caption='BuyingGroups' datatype='table' name='[__tableau_internal_object_id__].[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]' role='measure' type='quantitative' />
+      <column caption='StockItemHoldings' datatype='table' name='[__tableau_internal_object_id__].[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='BuyingGroups' id='BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E'>
+            <properties context=''>
+              <relation connection='sqlserver.0229exw0itokju1c7qmi40ggzzcz' name='BuyingGroups' table='[Sales].[BuyingGroups]' type='table' />
+            </properties>
+          </object>
+          <object caption='StockItemHoldings' id='StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294'>
+            <properties context=''>
+              <relation connection='sqlserver.0229exw0itokju1c7qmi40ggzzcz' name='StockItemHoldings' table='[Warehouse].[StockItemHoldings]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[LastEditedBy]' />
+              <expression op='[LastEditedBy (StockItemHoldings)]' />
+            </expression>
+            <first-end-point object-id='BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E' />
+            <second-end-point object-id='StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='BuyingGroups (Sales.BuyingGroups)+ (WideWorldImporters-Standard)' name='federated.0ymx4d61l0ozvf0zysift1rg7fe6' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ymx4d61l0ozvf0zysift1rg7fe6'>
+            <column caption='Bin Location' datatype='string' name='[BinLocation]' role='dimension' type='nominal' />
+            <column caption='Last Stocktake Quantity' datatype='integer' name='[LastStocktakeQuantity]' role='measure' type='quantitative' />
+            <column-instance column='[BinLocation]' derivation='None' name='[none:BinLocation:nk]' pivot='key' type='nominal' />
+            <column-instance column='[LastStocktakeQuantity]' derivation='Sum' name='[sum:LastStocktakeQuantity:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.0ymx4d61l0ozvf0zysift1rg7fe6].[none:BinLocation:nk]</rows>
+        <cols>[federated.0ymx4d61l0ozvf0zysift1rg7fe6].[sum:LastStocktakeQuantity:qk]</cols>
+      </table>
+      <simple-id uuid='{B0500545-D116-4FD7-9BF7-3A9C092FE010}' />
+    </worksheet>
+  </worksheets>
+  <windows saved-dpi-scale-factor='1.5' source-height='44'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0ymx4d61l0ozvf0zysift1rg7fe6].[none:BuyingGroupID:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{3FBD3A67-404D-4414-8539-9E317076A51B}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABYlAAAWJQFJUiTw
+      AAAgAElEQVR4nO2daYwc+XXYf1V9393T09NzX5whh8M9uIf3ULSRDduwISNWHAN2lC9ObCRx
+      APuLgsDOhxiCgxhGEBhOHMexA1iOI8s24niNSJblI8mu5MiSstrlLsnhzHCu7jl7+r6q6+iq
+      yochueTyEJtVTc4M/z+AH2am69V7zX79/79X7/+eZNu2jUDwlCI/aQUEgieJcADBU41wAMFT
+      jXAAwVONcADBU41wAMFTTV8dwLIsV+TYto1b2Vq3dBK2fWdOgm3eXgWUC7sU6wrTY1l0OUzU
+      Z1Jrawwk4ti2RWFvh2h6lGjQS63V4be++N495Xzmx17H7/M81D1vvomSJPWq7l1YloUsO/d7
+      t+ScZtssy0KSpGNtW08O0FWq5EsdnluYRq/uUrS8hKI6B4dVBhJxTENDa9fRA4NEg1403eRv
+      ru7cU5ZpWcDDOYBA0C96cqlOo0IincXj8eGRJXLrqyyvXEc3TdaWl9AJkE7F+6WrQOA6PTlA
+      dHCMcn6FXG6LjmExdeYsC+fm8Xs8zC0s4rNV9g4OKRzs03VnyyYQ9BWp11qgrqGj6gbhUBAb
+      GVmyMU0br9eDZRq0FRWASDRGR9V4Z2X/nnI+/uwkHs/D+d/NwMWNPWC328Xr7Tn06Zuc02yb
+      aZpIknSsbetZouzxEPDfHthI3LRPlr2EQkGQZGTpKLALBXy3rr04P4zfK/b9guNDTw5gmzrv
+      fvt9EgNJsjEvRSnLZFTn+m6VxfkZ1HaNrd0ipXKVj33sVeotlX/z37526/rf+Zefwh8LuW6E
+      QPCo9OQArdIOqYlznBmJo1dy5FZWUYIGZmiAYuGARHqI8WyXRlvFeeJLIOg/PW3OgtE4rVoZ
+      yzKxLPtWEOzzSPj9frRmmdV8iZcuPiscQHAi6GkF8EUGGUkorKyuMTmWJe3xIfs8ZAfTJFIJ
+      GpUCPtliZXWdhYU5/D4PL8wPf3izhwx6BYLHRc9ZoF4wTROPx3nQe5ozJafZtlOYBbJZX7mG
+      ZklMZAdQPEnSwS4HlTbjI0No7TpruV1MPDy3eI5iTeEzv/4Xd0h4YX6Ef/Hpjzk2RCBwg55c
+      U63to/vTLJ4/TwCVSqNNp92i3moD4A/HOTM9SafdAo7qXNqqccc/VTfct0IgeER6cgCra+Dx
+      fZjXLxcPOSgc0r1RCtExLKrlMh5Jpuu6qgKB+/TkAKH0OHppi6WlJTqmh6npaWamp4mGQswt
+      LGK2y1QabSTZI7JAghNBX4Ngw+jSUu/c8vi8HqIhf09yTnOgeJptO4VBMLTqZfaLDaYnsugE
+      CHkt2qpBLBIGwOrqFMp1RrIZ2qrB/3j72h3Xy7LET37yBYdmCATu0JMDmFqTa5sFLi7OotX2
+      KXBUCrG9d1QKAbC5tsJhy2Qkm6GjGXzx66t33tAjCwcQHBt6coB2tcDgyAQ+fxDbK99WCpFi
+      bXmJ5EAKwmnCWqlf+goErtLbeYCBEUo7G9RrFbR7nAfAMlGbVXa2t1F0cSBAcPzpOQhWlSbl
+      WptsJoWJD7/HRtW7hIKBG6+wURSVcDhEs63yF+9s3nG9LEv8yBsLPSl5mgPF02zbqQyCg+EY
+      Y+HYHReHgreXO0iEw0clz36fh4u31QIBDMZFObTg+NDbeQCry/vvvYc/HGU8HaYiDzEWNtg4
+      qHFudhKjVeabl9cZymY5OztFpdHhM//xz++Q8VM/9AI//LfOuWqEQPCo9OQASnmH6Mg8c6NJ
+      9EqOjZUVmkEDKzyIrmloukHA78e2RMd1wcmgp82ZLxBEVdq3fr4ZBHsli4O9HTzhNC+/eBGt
+      VcN0XVWBwH16WgH8sSyJ0hpLS0tMjA6RCHmRvRLpVJLhTBqlWWVpfZ9gPIWHo5z/xNCdbVJi
+      4d6eAgsE/UScB3jCck6zbacwC2SzvblGU+0yOTKE6o2R8psU6x2GMwPYtsn66iq2P8r8zASV
+      Rod//btfe6DEH/74Ob7vpdlHsUUgcExPDqA3i9TNEM+cH0ev5CgoIRKyTqVWZzgzQHlvi47t
+      YzSVBKBrWuQK9QfKbLS1R9deIHBIT2uT3mkTDEdv/fzR1oilaoNIPEl++RriYy04CfS0AkQG
+      x2m+e4mlWoSxdISZ+XOMh3XW92vMnZlDa1e5vLyFKXt6f8ImEDwB+hoEq5rBdrHxwNcMJsKk
+      vkOzrNMcKJ5m205hEAxap0WlrjCUTtKVvPhlG80wCQb8qO0mxUoNSfYyOjaC0TW5ull8KLmh
+      gI8feOVMr+oIBI7oyQEsQ+GDpTXmZiZQKrsc3miNuHGjNaLXHyCRSHD5yhJjYyO0Ojqf+7NL
+      DyU7kwwLBxA8dnpam1rlPQbHzpAaSBPwyXfPB7C9eO0O6eEJcSZYcCLoyQEiyQzlg20MXcXo
+      3n0eIOyXWd/c5cz0WL/0FQhcpactkCeY4Ny0wWZuj6mJLMNSAI/Hx8TIjfIG22JyZg7fDbcK
+      BXx88rX5h5ItSiQET4K+d4VQdOcdgoI+Dz6v51hnEx4VkQV6vDo5ygLZtsXSB+8j+YOMZ+I0
+      5DTDYYPcYYMzk2Mo9RKrW3tYkocXn7tAqa7w07/yZcdK/9ynP8ZrF8YdyxEIPkpPDtApb+NL
+      T3F2fAC9kuNKPocW6tLmqCWKrqnIXj9ap9MXZQUCt+lpbZI9Xkzjw0ZXidQgg+kBZOkoC1Sp
+      t0gMDBLARnQAFZwEeloBgslRfIUllpbKjA+nSSejRIJdEoaHiZEh2vUS67l9pGAYLzdnhDnf
+      t3k8Iqkq6A/iPMATlnOabTt1QfCd6Fy5tIw/GmN2dhqvLGHbFnvbW8QzE8RCPmotlV9/8x3H
+      StvYgOTKwzXbtm+bcHkM5AjbHk5Wn2xz5ABe/wDjGT8ra3kunJ3CNDRsXaXaNoiFfOiGybdX
+      7z0nWCA4Djhem0LxFLbWOiqFIEAyEXFDL4HgseBoU1Us7GJbZVLDU4xlkhhqm9XtXRpSh5GB
+      3rq/CQRPAgdBsI2masgeLz7fkR9Zlol+YwRSIBCko2m8v/5w5dAPvJN9FChKkvNgyrJMZNmN
+      wNwdOUe2Sa7sb4VtvctxtAKYpoktydwcmiRLMhI2yF4kCWz76FzwR5kcijM1nOxB6dObKTnN
+      tp3yLFCb995ZZiDtI5qZZCKbQm3X2T6oUCwWefX1V2m0Nf7dH3z9rit/7Hsu9OQAAkG/cOSa
+      6cwwCxcWqR/us7edRwrGyaYieINh59G1QPAYcPw5VepVPMEoidQAerPE+n6Nly8+Iw7ECE4E
+      DrZAAUyjyn41wdkzE3hkiWZVwUuX5ZV1FhbmCPg8vHr+7sMx45n4PeQJBI8fUQrxhOWcZttO
+      eRDc4Vtfv0IwGmBm/jyxkA+tXWctt4thyVx8ZoFirc3P/PuvOFZaIOgXDhzAJJ4c4ez8AFdX
+      t3j2wjz+cJypcYurK0djkWwbjK6YFSY4vjhemyTZA3aXteUlOoaFoih4QJwHEJwIHKwAMtXS
+      Lle6ZSbOLJCMBGhWDymW68g+v0iDCk4EfQ2Cu90umgtbIMuykQBJdp5cNbsmHq/zwNwtOZZl
+      ISEJ2x6TTh+V42AF6LJydYVgYoCJsWHkG/UepqFyUKwzNpql1dH5wl9ddarzjbpydyrLLdtC
+      dqOmyCU5p9o22wbpeNvmwAFUbClB3GewurnHwuxRvn9z7TqltsnYaJaO1uXP/9+6U50Fgr7h
+      2KVSQ6N02zXWlpcoFvaQoxlCPhEBCE4Gjj6pSrtJfmOdSDrL3MIiHmw6zTI729soukh/Co4/
+      DoJgi8P9Ar5IjFQ8etvvbVRVIxgM0lRU3rqUd6ykbR8FwbhSV2658mTSLTnCtser00fl9HlA
+      hs7mwYNnhD0MtnUjmHLhjTRNC4/H+RvphpxQwMfkjTGyx7lc4FE55aUQLd76y0skB0MMT55l
+      OB3DaJX4mw82GB7OcnZ2impT5ed/8385Vvq0cm4yzS//k+990mo81ThyzeGxaZ5//llK+zu0
+      W01U3SQcDGDe4xSYQHAccbw2dbUOeHzUazU84QFeeuE5jHYd0w3tBII+42AL5EPrlLieUzh3
+      dh6fR6LTrHJtY59wIo0H8HplzoymHCt51F7JHWxsVx7MuCFnfFCci3jSiPMAT1jOabbtlAfB
+      Gu996yq+cJC5c+cI+jy0amXyewVqTYXXXn2ZcqPDL/z2W46VvvFE3ZVlwLZdycr1LCfo9/Kr
+      P/uDzm8scBUHDmAQig4xNxvn2vVNnl2cI5pMcz6e4NLla8gcpQr3yy3XlD3JuNElW+A+jtcm
+      jz8Ils7a8hKKbnGQX2d4YtYN3QSCvuPga0nicD+PbpQYmZonk4yAbbHeNHhmWvQHFZwM+hoE
+      a7rBQbXtWI5t3SgZdqOu/Ak9CZYliYmhxF2/F0Hw49XJxSDYJL+ZJxhPMZS+0eXNtikc7BKI
+      pkjGImiGyTeu7t5x1Q++coZENNjTnU7zh0TwZHHUFaLesPFKh6y1NeYmsxR3N2gTJ7dyjVde
+      fpl2R+cLf3X5jqtevzDeswMIBP3C0Veqz+dndGoGtV5ibXkJORBhf3sDw5To275KIHARx3uK
+      8sEugXiauYVF2tUiM+eeIYwpukIITgQOtkBBPFKTjpRhbjINwMT8Bba3NhibP4cfCAd9/Mgb
+      dw7KiIX9DtQVCNylr1kg3ehSb2uO5ViWjeTwPIDP6yEZDR67IPg0B/inPAuk8NdvvU8sEWD8
+      zHnS8RCNygEb24fYso8Xnj1Pua7w07/yZcdKu8GFmQy/9I9F7b3gThy4psXg0ATPPXeBvfzR
+      scdaqcTYzFmsTouuSwoKBP3E8drUqlfwBYOsLS+RGpultr9FvaPjvAZUIOg/juYD2GaNUivF
+      2dlJZFmiq6uAxAsvXETiqALyE89POVbSjeZR40Oi9l5wN30/D+BWR4Dj3mLvURG2PRjPjQD6
+      eAXBVpe1rV3mZqewTIO1ax8QzMyTjdqsbe2gdm1efP4ZDqvtYxMEC04e4aCP3/+FH+3rPR4t
+      BrBtWu2jIjdJ9jA9PYaqdvGHYiycO4updcSTYMGJ4JEcwL5xSje3vkKjrd/K81pdjffeu8S5
+      C8+K9uiCE0HPWyBdabKytsHw2AzD6ThdXWF1OU9VkQnZcSxPgN3tHWILc/3QVyBwlRMTBIOE
+      LALFx6LTcbLteAbBtkWl1mAglcS2berlAgRTRP0Wm1s5grEBJkaGaLQ1Pvdn7ztW2t0e+vat
+      WQZPSs4//dRLRIJHNVE3JbjSi1O2bn1gjoMcbNu1Uoh+8YhZIJP8zt6RA5gG7WaFdttPdCTC
+      5MwcH1y6xMTIEKre5e33cy6rfPL5R5+8SEQciTgWOHLN3PoKTdUimx0EwOv3s7e5iirOAwhO
+      CD2vAF2tw/7+HoFwjKkzE1hdnYOdEtWKh2rUwhdJEaq0xXkAwYmgZweQvV5iyUHGEzdKCySJ
+      YHyY+ThEYnEkucnixefwA7FwgJ/5e684VtK2j4JgN9qjW5aJLLsR4D26nHDQ5/j+Anfo3QE8
+      PpKJ+K0tjuzxkUod9f+UJAlfMnnrtR5ZYjARvqecgM/D4nTmoe55mmvmBU+WRy6FeH/pOhef
+      XcTq6qxceQc5tcC5qQEK22tczVX43jdepdZS+ezn3rqniNF0jN/45z/kQHWBwDmOvlLrtQqG
+      JTN/dg4J6Gptyh0YjIdcUk8g6C89O4Bt25hWF0mSsUyT20dhFHa30VVVDMkTnBh63gIZaovr
+      G9vMzs0TC/ro6grXNw7odCXGFy8w5pcYHR4i7JdRvB4u3Geff7/YQCB4nIj5AE9Yzmm27ZQf
+      ioe9/T2GM2nyeyWmJ8ewTIPVpStkpi+Qjvkp1RV+zo0heTdd1I0xMW6Nm3kEOf/qJz7hysQc
+      gXs4coB6rUazUmR0dhE4GhqRHUzS1LqkY34sy6baVF1R9DQghgcePxytTarSoNJU8Xsl1paX
+      0CwPPu/xLXwSCD6KoxUgnsrwzOgQq+tbXFhYRFMarG7u0JYaDA8865aOAkHf6HNnOINqy6XO
+      cLg1H8CdwPxR5AzEQvg+UmcvguDHq5OrQXC73SYSCdNoNInH42Db7O/kkMNJsukkHa3LV765
+      7lhpN6fk2baFJLlQM++SHGHbw4rqj22OHCC/nScdDdDxJInHQW3X8cczbK4uMZj+LhTV4I+/
+      es2x0gJBv3DkUp1WjZV8iYnhBGvLS1j+GGp1j0BsQHSGE5wIHK0AoWiSyUSI9XyR+YVFaoU8
+      Zc3HudlRcSBGcCJwFAQrHYVwKESz2SIWi6EpTXb2D0HyMTM7Savd4cvfcB4D3FTRnfMAlitB
+      mVtyhG0PR79s6/uUyMOactfv/T4P2VT0oeWc5kzJabbt1GeB1tbXmBgeZGO/zvm5KbR2nbXc
+      Lo22xuvf9QKVRoef+dU/u+u6cxNp/u0/+34ntxYIXMGRazaqRd69cp25mUksy8IfjhHxScgu
+      5NkFgseBIwcIRZOko35aSofNtVVUw2bqzFl8horuloYCQR9xtAVKJpMMZwbZ2t7nzNkFmtUi
+      S3tFgskBfBydCc6mInddNyBOjAmOCeI8wBOWc5ptO/VBcLFYZDCdYu+gyNjoCAB6p87adoXF
+      szNUmx1++Qtf70nmz/7oK0xlk9/5hQKBCzhygFK5RLNSIDl6oxO0bbO2lkM1j340uhbXdyo9
+      yVQ1MV5P8Phw5ACdVo2yLjMx52VteQm/34sdjKEWD+ia4lmw4PjjyAHC8RTnRzJcW9niucVF
+      lFYDb6NJac/A6l9oIRC4Rl+DYFXTWd+v93TNzEiScODO1oGnOVA8zbad+iBY0zUCfj+qqhEM
+      BrEtk1KpBB4/mXSKrmmxtV/rSea9Xu9ub9DjVi/z8LZFQz4+cXHa8T0FH+LIATY2NhgZiFLs
+      +JifGkZrltgrt5gcPeoF1FR0fuuL33ZFUQGMDcaEA7iM4/MAl9f2mZvMsLa8RMf0IhkKG1vb
+      ohxacCJwXAoxN5Yif1BjbmGRoN/H/LkFpK6KaAAiOAk42gKNjY4Ri8WoVKoA+AMBcrlNxqbO
+      4AFCAS/f//KsYyVdrSs/BjPCbqcX25JRMVfJbfqaBep2uxguPA9wdUrkE+wKcS8sywJJcsWZ
+      TpptkiQR9D/cd/CxzAJt5bYYH86wsVvm7OwklqFy9doKwdgA8zMTFGsKP/0rX3astOB0ko6H
+      +O2f/9QT1cHheYAyH1xZZnJyHICD7Q102+vGaGCB4LHgyAFkrxevDIZhsLa8hKJbjExMY5SL
+      dNzSUCDoI462QInkAGPZDGu5Pc4uLGIaHZauXccKhAkCSEdnAgSCe+HKMG6HiPMAT1jOabbt
+      1JdCVKtVkskExVKFocwgrVqZ/F4BzbB5/vkL1Nsqv/nF9xwrzU0fdSnt6EY61S05wraHFdUf
+      2xw5wEHhgFa1gC95FARHk2nOJ5K8d+kyMqDpJt+4uuNIYYGgnzguhdg6qDOUCt0KgmuFbVLD
+      U27pJxD0FcelEC8sTLG0us3cwiJhn8TWXpWpYTEGSHAycBQEHwUUHgyji8/nA9uma5q3gox2
+      R+PbqweOlbQsC0lypxz6OD4tFbY9Pp0+KsdRDHAzur8jyrdtTNPC45GRJAj4Hqx0IhJkYWrw
+      ga85zZmS02zbqc8CrayuMJEdIF/WWJybpHq4Q+6wiaIofOzVl6m3NH7p83/9QBnPz2X5xZ/8
+      HidqCASPjOMg+NJyjoUz4xwe7CN5fHQUBdyYLiIQPAYcB8ETg1EKlRaBYJBKucjsuQtEZFu0
+      RhScCBxtgYaGhhhIpdg/OCQxMkwkHGR9Y4toZhg/R23QX5gffqCMWTE4WvAEEaUQT1jOabbt
+      1AfBu7u7DA+lye+VmJkaR21Vub6xgy8cY2FummJN4TO//heOlXYTGzdmFronx02Ebb3LceQA
+      tXqVeqXI5PwFAA52d5iYP8/mtQ+wmMa2bdqq4eQWAkFfceQAhqqgGTZeD6wtLzE0Ns3u5iqV
+      esst/QSCvuLIAeKpQSZHs6ys57mwsIjeaQIwOj7hLL0kEDwm+hoEG0aXlgtbIDe7Qhy3cgHb
+      OpqmLmx7PDq5Wgph6iqa7bnVy9O2bVr1Kt5wgpDfQ1s1+KO3nU+Kt237KHDp4Y38kTcWGEyE
+      7/r9ccuUiCzQ49XJ1SyQ3i5zqEeZziYAMI0Ou7k1wmPPMDkYpqMZfOnrq840fkS+98WZezqA
+      QHA7rmzVbdtkbXkJnSDjo1k3RAoEjwXHDqB22qha96g1oseirXToKAqWaA4qOAE42gIFYhmi
+      rQNa7Q6hYACzq6NJYUJ0sGyIhvz8xA8+71jJRwmCxSRKwcPQ1yyQphvsFJuO5Vg3guDbHWAy
+      m8Dn7T0rcNwCRREEP16dXA2C1do+RSPCRCZ+9HOrylpuj3qzw+uvvUyl0elbKcRvfOaHGB2M
+      9UW24OnBkWvatoVp2di2jaap+CNJzs5O4pGlY1dLIhDcC+drCgAWhb09kgMpltdyvPTSi8IB
+      BCcCRw7gDUSp5XPI5jCTM7PUDnfw+7xcv77OwsIcXo/MxFDcLV3vvLdXFFsInCPOAzxhOafZ
+      tlMfBBtKnabpZyB2lHLU2nXWcrvIvhDn52eoNDr84u9+zZnGbmPbrrTqc02OmwjbepbjyAG6
+      WouGHr3lAP5wnPMLEd759iVghq5pkS/0NidYIHicuFoK0TEs8htr2Hgx3RAsEPQZRyuAJMns
+      bK0hmxPMLSzSrB7S1iywTDEmVXAi6GsQrGo6ORe2QK5OiTx2k+KFbQ9Dv2zrexboaXkjHxVh
+      28NxIh3AzaEG4M4bedyGSAjbHl5WP+T01QEEguNO3x+n2rbFTm4LrWvRURRsoNVscj+3s7o6
+      W5ubdLQuXb1DbnsXy7bROy3yu0et1hVFwbYtWq32A+9tGirlWuMOHSzTIJ/LYZg2iqIANs3m
+      gytWTUNlayuH3rVoN6rsH5axgUalyGGlDpaBoup09Q6K1n2AHI3NzS20rvlg2yyLVvvettmW
+      Sb3RAKDTqrN7UASgWStTKFUBqJUPKVUbWKaBqhloShu9a31EkE29XgOgq6tHehkmhqaQ39nD
+      skFTmuzsHWLbFoqiYlsGrbZ6l05dXaWlqLf0K5YqABQPdqm3Oti2zcFunnZHR1MUTKDdamF9
+      5ENwu22G2mYrl6dr2fe2rftwthmawtZWnq5pY6gK+Z19LBvUdoOd/UM8n/3sZz973/8xF1i/
+      dplIZpjrK9fR2i18fpv8QZ1MOnnP5xrFwwLJdJqlpWWKxQIjmQQbOxX2d/IMJX3kS12q5QPa
+      lQKeaPrWeeS7sG3WVlfZLxZRa6VbOjRKBdLZLKtrW7RaDXyWxmGzSzp5n8pS2+bqlauMT46D
+      2eXa9U38ZhPFhJ2DCt1aAX84SL7UZj+3yfDYKJ77LNVXPviAickJlpavUzzYZzgTZ2OnesM2
+      L9vlLpWbtkXubdv+Tp78foHRbJoPLi8T8xlUNcht7eE1Gmg25PfraI0Cks9Dtaaxnd9iZGTk
+      jonttfIhV1bWmZwYp3h4SCoV59rKOsXCPkPJEPlik93tbVIhm2LHonJQonK4Q2wwS+D2MnSr
+      y8b6GjVFZXAgxV5unaWNPQZ8OkXdTyG/ga01MIID5NavY7cV5IiPja0DhjPpO7Yjt2wbznDl
+      8hITkxPItsHV5dyHth3U0eoFJJ9Mta6znd+8t22rG0yOj3H5gw+YGM+yfH2bw4NdMskQ28Um
+      uzvbpIJW/1cAxbDIJBN4PDamrvCt95Y5Nz9134d6maEhcmsrZMfG8HgCJNIjGGoBrzdKKjuF
+      2tinVtyh2JYZfMChl1blAG98iIBHvkMHw5JJJZPIaOhKg/dXtjkzOXJfObZtUiqX2Ly+Sn53
+      l3A0xWh2kN3dPRKpDGNDUUoNna3l9wkPjuN7wFjYaNDLyuoKgXAUjzdAMj16m23TqPUbtin3
+      t210YppIwAvdNt7QAJmREVq76/iSw2SH0xzmtogNjTKUiNFQOiy/+00GJs/eNa42OZhlMHXk
+      9IOZNBvXrzM6MYHkCzCQzaJWy/hCYbIjWRqVGsX9LRQ7TCz4EaeUvczMzOCRwOg0qOteBmIB
+      SlWF0dEMyaCXzZrGZDZFxONBs3T+5pvvsbAwf9ee/kPbWhRLTdZWlinu5vGlhhnKpjnM5Yhn
+      RskkYjQUleV3v0H6frYlowAEfRLLK+uEYzEkX4B0NotaKeMLRciOZPvvAGGfTLXZwjIlPP4w
+      r1w8x9LKJvcLPVauXGZ45jxj2UFMU6dVP8QXzNI12zRKOwTjwyQz42QiJoXq/bdA9ZaCWi+y
+      vbuPV+KWDj7ZotFqYhPAH47z3NlxVjfvP8hPkmQSiRSzs5OoqkWnXadQrDI2NkqjXma/rDAY
+      9zO98Bztwxxa9/4hVaXV4ZkLz9BpVI9sq93btsHw/W2zLAvbtrG9YbpqjcrhIdGxM5iNQ0rF
+      KpmpKdqlA8rNFvFwkIUXX6W4eY3uR86o2vZRGbtl2Vy7fJmpc8+SHYhjd3Xq5TLB1ACG2qF0
+      WCQ+kCQzMk3IblFra3fJualTu9miqyvsbO/gD3g5KFRoaCYzyQC7pQYdyyQg+3ntlYtcXVq5
+      6zNwyzZPmFQqyszUKE3Th1k/pFyqkpmapFUqfGjbC69y+B1sa3a6PPPMIo1K8YZtJYID6Ru2
+      lfofBNu2SW5zi+GJaSxdJRiJ0Go0iMVi94zqiwc7lGstIvEBRtJRcnslZqYnMDot9koNZibH
+      aLfbhMMhms028fiDD8U0W02ikfAtHfyyxdbWNhPTM+iqQiQSoV5vkEjcv2rVUNvk90tMT03S
+      aVSoqRZjwxnqpQKq7Wd4IEpbtwl5LdqGRCwcuKecrt5hY2uHiekZfLb+SLbtbK3RUrukBoeJ
+      +W1KLZ3J0SyNapGWLjOaTVMp7mPIYQYTIfSuhMfWMT0BQv4Pn3uWD/coVhoEInGCkkG91SEx
+      kCEdD7JbqDA1OYHerlOoKUyOZVEUjUjYT6PZIR6P3pJjdXU2NjboWjA2OUss7DSeIioAAAHw
+      SURBVKfZbBGLRTnYzROID5KMhtjb3iI+OIbPNvBFInSaDUKR2B3f3rdsywyTCMo33pNxmtUi
+      LeND27pymPRD2BaMJBhJR8nvHjI1MwNdhd1CjanJ8Vu2iSyQ4KlGFNULnmqEAwieaoQDCJ5q
+      hAMIjg1vvf3V+//R6PDW178FgG0Z/Okf/R7/6T//FypKi7ff+tZ9L3vzzTcBsJoHfPXdlTv+
+      9u7//opbh+IFAuesra/z3Z/42zSKeX7vD94kPr7IeLDO+9f3ee3l5/n87/4h3mCc1xcyXN48
+      5NOf/nFquSU+//n/ijcaZv3d/0NRkfn0j3+K//77f8DCd303qtrhL7/0Jj5Z4/e+8i6J4E/x
+      ztt/STcyzMWMT6wAguNHp6Uw/9xLVAo5ItEYkiQzNDHLa298Dx9/cQE5NMA//Ps/zJf+8Hfo
+      REd4/bXv5sUzETwDF/jUx+d584+/xCuf/Af8wBsvs/H+19hqhXjjlRf52Pf9HWaHwozNXaBV
+      K2CjCQcQHB/8eo3/8Gu/xuZegUuX3gdPgHa7ja510PBDJcf/fW8Fo13lzT/5n2hSiGR0ALO9
+      ybsbbYzSZf7kqyt86u9+km/+6Rf486+9w/Mf/yQzUYVDO0Hxg7e5vLLJpUuX6NoeguG0eA4g
+      eLoRK4Dgqeb/AybHY56yOUSkAAAAAElFTkSuQmCC
+    </thumbnail>
+  </thumbnails>
+</workbook>

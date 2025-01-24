@@ -1,16 +1,22 @@
-﻿class Program
+﻿using System.Text.RegularExpressions;
+
+class Program
 {
-    static void Main(string[] args) {
-        // Define file paths for the Tableau workbook and output files
-        string filePath = @"Data/multiple datasources.twb"; // Path to the Tableau workbook file (adjust as needed)
-        string connectionInfoJsonFilePath = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\connection info.json"; // Path for saving connection info in JSON format
-        string connectionInfoExcelFilePath = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\connection info.xlsx"; // Path for saving connection info in Excel format
-        string visualizationInfoJsonFilePath = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\visualization info.json"; // Path for saving visualization metadata in JSON format
-        string visualizationInfoExcelFilePath = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\visualization info.xlsx"; // Path for saving visualization metadata in Excel format
+    public static async Task Main(string[] args) {
+        // Define file paths for the output files
+        string connectionInfoJsonFilePath = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\connection info.json"; 
+        string connectionInfoExcelFilePath = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\connection info.xlsx"; 
+        string visualizationInfoJsonFilePath = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\visualization info.json"; 
+        string visualizationInfoExcelFilePath = @"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\visualization info.xlsx"; 
 
-        // Instantiate the TableauInfoExtractor object to extract and save information
+        // Get information about the workbook
+        string filePath = @"Data/Netflix Titles.twb"; // Path to the Tableau workbook file (adjust as needed). This is needed for XML extraction.
+        string pattern = @"Data/(.*)\.twb";
+        Regex regex = new Regex(pattern);
+        var match = regex.Match(filePath);
+        string workbookName = match.Groups[1].Value; // The corresponding workbook name in Tableau Cloud. This is needed for API calls.
+
         TableauConnectionInfoExtractor connectionInfoExtractor = new TableauConnectionInfoExtractor();
-
         TableauVisualizationInfoExtractor visualizationInfoExtractor = new TableauVisualizationInfoExtractor();
 
         try
@@ -22,7 +28,8 @@
             connectionInfoExtractor.SaveConnectionInfoToJSONAndExcel(dataSourceInfo, connectionInfoJsonFilePath, connectionInfoExcelFilePath);
             Console.WriteLine("Connection data extracted and saved successfully.");
 
-            var visualizationInfo = visualizationInfoExtractor.ExtractVisualizationInfo(filePath);
+            // Extract visualization metadata
+            var visualizationInfo = await visualizationInfoExtractor.ExtractVisualizationInfo(filePath, workbookName);
             visualizationInfoExtractor.SaveVisualizationInfoToJSONAndExcel(visualizationInfo, visualizationInfoJsonFilePath, visualizationInfoExcelFilePath);
             Console.WriteLine("Visualization metadata extracted and saved successfully.");
         }
@@ -30,6 +37,7 @@
         {
             // Handle any errors that occur during extraction or saving
             Console.WriteLine($"Error: {ex.Message}");
+            Console.WriteLine(ex.StackTrace);
         }
     }
 }

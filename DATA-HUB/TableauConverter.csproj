@@ -14,8 +14,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-    <None Update="data/Test SQL.twb" CopyToOutputDirectory="PreserveNewest" />
     <None Update="data/Superstore analysis.twb" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="data/multiple datasources.twb" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="data/Netflix Titles.twb" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
