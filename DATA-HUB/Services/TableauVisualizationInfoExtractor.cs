@@ -9,8 +9,8 @@ public class TableauVisualizationInfoExtractor
 {
     private const string TableauCloudUrl = "https://10ay.online.tableau.com";
     private const string ApiVersion = "3.24"; 
-    private const string TokenName = "AccessTablesAndColumns"; 
-    private const string TokenSecret = "J++jc7doTgyaPndi5V7Eqw==:Vs3TpAPpWVskOx0jDfkjMTLY3Dcvhqj7"; 
+    private const string TokenName = "PLACEHOLDER"; // Generate from Tableau account
+    private const string TokenSecret = "PLACEHOLDER"; // Generate from Tableau account
     private const string SiteId = "tableauuser6-41ea9b971e";
 
     public async Task<List<VisualizationInfo>> ExtractVisualizationInfo(string filePath, string workbookName) {
