@@ -93,8 +93,8 @@ def main():
     "tableau_prod": {
         "server": "https://10ay.online.tableau.com",
         "api_version": "3.22",
-        "personal_access_token_name": "AccessSiteData",
-        "personal_access_token_secret": "lC1TkSMqTZ67NomUSHcp3w==:2cJbo0kssFbovNfQIWqDGS6L3097UMYE",
+        "personal_access_token_name": "PLACEHOLDER",
+        "personal_access_token_secret": "PLACEHOLDER",
         "site_name": "arjun-at-quadrant",
         "site_url": "arjun-at-quadrant"
         }
@@ -109,7 +109,7 @@ def main():
 
     packaged_workbook_file_path = r"C:\Users\ArjunNarendra(Quadra\Project Work\Repos\Quadrant-QHub\DATA-HUB\Workbooks\World Wide Importers Analysis.twbx"
     workbook_name = get_workbook_name(packaged_workbook_file_path)
-    workbook_info = conn.publish_workbook(workbook_file_path=packaged_workbook_file_path, workbook_name=workbook_name, project_id=project_id, connection_username="api-access", connection_password="Waterduck")
+    workbook_info = conn.publish_workbook(workbook_file_path=packaged_workbook_file_path, workbook_name=workbook_name, project_id=project_id, connection_username="PLACEHOLDER", connection_password="PLACEHOLDER")
 
     # packaged_workbook_two_file_path = r"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Data\Netflix Titles Analysis.twbx"
     # workbook_two_name = "Netflix Titles Analysis"
