@@ -10,11 +10,16 @@
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="7.5.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="pythonnet" Version="3.0.5" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-    <None Update="data/Superstore analysis.twb" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="data/Netflix Titles.twb" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Workbooks/Netflix Titles Analysis.twb" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Workbooks/Netflix Titles Analysis.twbx" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Workbooks/Superstore Analysis.twb" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Workbooks/Superstore Analysis.twbx" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Workbooks/World Wide Importers Analysis.twb" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Workbooks/World Wide Importers Analysis.twbx" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

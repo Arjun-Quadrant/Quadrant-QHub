@@ -6,9 +6,11 @@
     <AnimationOnByDefault />
     <MarkAnimation />
     <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
     <ObjectModelTableType />
     <SchemaViewerObjectModel />
     <SheetIdentifierTracking />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
     <WindowsPersistSimpleIdentifiers />
   </document-format-change-manifest>
   <preferences>
@@ -20,7 +22,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='ARJUNS-LAPTOP\SQLEXPRESS' name='sqlserver.0229exw0itokju1c7qmi40ggzzcz'>
-            <connection authentication='sspi' class='sqlserver' dbname='WideWorldImporters-Standard' minimum-driver-version='SQL Server Native Client 10.0' odbc-native-protocol='yes' one-time-sql='' server='ARJUNS-LAPTOP\SQLEXPRESS' sslmode='require' />
+            <connection authentication='sqlserver' class='sqlserver' dbname='WideWorldImporters-Standard' minimum-driver-version='SQL Server Native Client 10.0' odbc-native-protocol='yes' one-time-sql='' server='ARJUNS-LAPTOP\SQLEXPRESS' sslmode='disable' username='api-access' />
           </named-connection>
         </named-connections>
         <relation type='collection'>
@@ -311,6 +313,233 @@
       <column caption='Valid To' datatype='datetime' name='[ValidTo]' role='dimension' type='ordinal' />
       <column caption='BuyingGroups' datatype='table' name='[__tableau_internal_object_id__].[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]' role='measure' type='quantitative' />
       <column caption='StockItemHoldings' datatype='table' name='[__tableau_internal_object_id__].[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]' role='measure' type='quantitative' />
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/ArjunNarendra(Quadra/Data/World Wide Importers Datasource.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='01/30/2025 02:07:11 AM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E' table='[Extract].[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]' type='table' />
+            <relation name='StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294' table='[Extract].[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]' type='table' />
+          </relation>
+          <cols>
+            <map key='[BinLocation]' value='[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294].[BinLocation]' />
+            <map key='[BuyingGroupID]' value='[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E].[BuyingGroupID]' />
+            <map key='[BuyingGroupName]' value='[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E].[BuyingGroupName]' />
+            <map key='[LastCostPrice]' value='[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294].[LastCostPrice]' />
+            <map key='[LastEditedBy (StockItemHoldings)]' value='[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294].[LastEditedBy]' />
+            <map key='[LastEditedBy]' value='[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E].[LastEditedBy]' />
+            <map key='[LastEditedWhen]' value='[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294].[LastEditedWhen]' />
+            <map key='[LastStocktakeQuantity]' value='[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294].[LastStocktakeQuantity]' />
+            <map key='[QuantityOnHand]' value='[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294].[QuantityOnHand]' />
+            <map key='[ReorderLevel]' value='[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294].[ReorderLevel]' />
+            <map key='[StockItemID]' value='[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294].[StockItemID]' />
+            <map key='[TargetStockLevel]' value='[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294].[TargetStockLevel]' />
+            <map key='[ValidFrom]' value='[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E].[ValidFrom]' />
+            <map key='[ValidTo]' value='[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E].[ValidTo]' />
+          </cols>
+          <refresh>
+            <refresh-event add-from-file-path='BuyingGroups (Sales.BuyingGroups)+ (WideWorldImporters-Standard)' increment-value='%null%' refresh-type='create' rows-inserted='229' timestamp-start='2025-01-30 02:07:10.440' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>BuyingGroupID</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[BuyingGroupID]</local-name>
+              <parent-name>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</parent-name>
+              <remote-alias>BuyingGroupID</remote-alias>
+              <ordinal>0</ordinal>
+              <family>BuyingGroups</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>BuyingGroupName</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[BuyingGroupName]</local-name>
+              <parent-name>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</parent-name>
+              <remote-alias>BuyingGroupName</remote-alias>
+              <ordinal>1</ordinal>
+              <family>BuyingGroups</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>LastEditedBy</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[LastEditedBy]</local-name>
+              <parent-name>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</parent-name>
+              <remote-alias>LastEditedBy</remote-alias>
+              <ordinal>2</ordinal>
+              <family>BuyingGroups</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ValidFrom</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[ValidFrom]</local-name>
+              <parent-name>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</parent-name>
+              <remote-alias>ValidFrom</remote-alias>
+              <ordinal>3</ordinal>
+              <family>BuyingGroups</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ValidTo</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[ValidTo]</local-name>
+              <parent-name>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</parent-name>
+              <remote-alias>ValidTo</remote-alias>
+              <ordinal>4</ordinal>
+              <family>BuyingGroups</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>StockItemID</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[StockItemID]</local-name>
+              <parent-name>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</parent-name>
+              <remote-alias>StockItemID</remote-alias>
+              <ordinal>5</ordinal>
+              <family>StockItemHoldings</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>227</approx-count>
+              <contains-null>false</contains-null>
+              <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>QuantityOnHand</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[QuantityOnHand]</local-name>
+              <parent-name>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</parent-name>
+              <remote-alias>QuantityOnHand</remote-alias>
+              <ordinal>6</ordinal>
+              <family>StockItemHoldings</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>227</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>BinLocation</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[BinLocation]</local-name>
+              <parent-name>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</parent-name>
+              <remote-alias>BinLocation</remote-alias>
+              <ordinal>7</ordinal>
+              <family>StockItemHoldings</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>31</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>LastStocktakeQuantity</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[LastStocktakeQuantity]</local-name>
+              <parent-name>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</parent-name>
+              <remote-alias>LastStocktakeQuantity</remote-alias>
+              <ordinal>8</ordinal>
+              <family>StockItemHoldings</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>226</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>LastCostPrice</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[LastCostPrice]</local-name>
+              <parent-name>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</parent-name>
+              <remote-alias>LastCostPrice</remote-alias>
+              <ordinal>9</ordinal>
+              <family>StockItemHoldings</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>63</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ReorderLevel</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[ReorderLevel]</local-name>
+              <parent-name>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</parent-name>
+              <remote-alias>ReorderLevel</remote-alias>
+              <ordinal>10</ordinal>
+              <family>StockItemHoldings</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TargetStockLevel</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[TargetStockLevel]</local-name>
+              <parent-name>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</parent-name>
+              <remote-alias>TargetStockLevel</remote-alias>
+              <ordinal>11</ordinal>
+              <family>StockItemHoldings</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>13</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>LastEditedBy</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[LastEditedBy (StockItemHoldings)]</local-name>
+              <parent-name>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</parent-name>
+              <remote-alias>LastEditedBy</remote-alias>
+              <ordinal>12</ordinal>
+              <family>StockItemHoldings</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>LastEditedWhen</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[LastEditedWhen]</local-name>
+              <parent-name>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</parent-name>
+              <remote-alias>LastEditedWhen</remote-alias>
+              <ordinal>13</ordinal>
+              <family>StockItemHoldings</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
       <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
@@ -321,10 +550,16 @@
             <properties context=''>
               <relation connection='sqlserver.0229exw0itokju1c7qmi40ggzzcz' name='BuyingGroups' table='[Sales].[BuyingGroups]' type='table' />
             </properties>
+            <properties context='extract'>
+              <relation name='BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E' table='[Extract].[BuyingGroups (Sales.BuyingGroups)_66C43C153E314B50968DE7F20E9D547E]' type='table' />
+            </properties>
           </object>
           <object caption='StockItemHoldings' id='StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294'>
             <properties context=''>
               <relation connection='sqlserver.0229exw0itokju1c7qmi40ggzzcz' name='StockItemHoldings' table='[Warehouse].[StockItemHoldings]' type='table' />
+            </properties>
+            <properties context='extract'>
+              <relation name='StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294' table='[Extract].[StockItemHoldings (Warehouse.StockItemHoldings)_C90E805934894A8A8974C1B598AD3294]' type='table' />
             </properties>
           </object>
         </objects>
