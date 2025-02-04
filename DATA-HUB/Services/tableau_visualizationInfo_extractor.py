@@ -8,6 +8,14 @@ import xml.etree.ElementTree as ET
 import os
 import time
 
+class VisualizationInfo:
+    def __init__(self, worksheet_name: str, viz_title: str, viz_type: str, tables_used: str, columns_used: str):
+        self.worksheet_name = worksheet_name
+        self.viz_title = viz_title
+        self.viz_type = viz_type
+        self.tables_used = tables_used
+        self.column_used = columns_used
+
 def get_workbook_name(file_path: str):
     file_name = os.path.basename(file_path)
     workbook_name, _ = os.path.splitext(file_name)
@@ -40,15 +48,9 @@ def get_tables_and_columns(workbook_name: str, worksheet_name: str, connection: 
         }}
     }}
     """
-    print(query)
-
-
     time.sleep(10)
-    print(workbook_name)
-    print(worksheet_name)
     response = connection.metadata_graphql_query(query=query)
     response_json = response.json()
-    print(response_json)
 
     tables_as_json = response_json["data"]["workbooks"][0]["sheets"][0]["upstreamTables"]
     columns_as_json = response_json["data"]["workbooks"][0]["sheets"][0]["upstreamColumns"]
@@ -60,17 +62,14 @@ def save_to_excel(visualization_info_list: list, excel_file_path: str):
     workbook = Workbook()
     worksheet = workbook.active
     worksheet.title = "VisualizationInfo"
-    
     add_excel_headers(worksheet)
     populate_excel_data(worksheet, visualization_info_list)
-    
     for column_cells in worksheet.columns:
         max_length = max(len(str(cell.value)) if cell.value else 0 for cell in column_cells)
         worksheet.column_dimensions[column_cells[0].column_letter].width = max_length + 2
-    
     workbook.save(excel_file_path)
 
-def add_excel_headers(worksheet):
+def add_excel_headers(worksheet: Worksheet):
     headers = ["Worksheet Name", "Visualization Title", "Visualization Type", "Tables Used", "Columns Used"]
     worksheet.append(headers)
     for cell in worksheet[1]:
@@ -88,7 +87,7 @@ def save_to_json(visualization_info_list: list, json_file_path: str):
     with open(json_file_path, "w", encoding="utf-8") as json_file:
         json.dump([info._asdict() for info in visualization_info_list], json_file, indent=4)
 
-def main():
+def extract_viz_info(workbook_file_path: str, packaged_workbook_file_path: str):
     config = {
     "tableau_prod": {
         "server": "https://10ay.online.tableau.com",
@@ -106,30 +105,10 @@ def main():
     project_info = conn.create_project(project_name=project_name, project_description=project_description)
     project_info_json = project_info.json()
     project_id = project_info_json["project"]["id"]
-
-    packaged_workbook_file_path = r"C:\Users\ArjunNarendra(Quadra\Project Work\Repos\Quadrant-QHub\DATA-HUB\Workbooks\World Wide Importers Analysis.twbx"
     workbook_name = get_workbook_name(packaged_workbook_file_path)
-    workbook_info = conn.publish_workbook(workbook_file_path=packaged_workbook_file_path, workbook_name=workbook_name, project_id=project_id, connection_username="PLACEHOLDER", connection_password="PLACEHOLDER")
-
-    # packaged_workbook_two_file_path = r"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Data\Netflix Titles Analysis.twbx"
-    # workbook_two_name = "Netflix Titles Analysis"
-    # workbook_two_info = conn.publish_workbook(workbook_file_path=packaged_workbook_two_file_path, workbook_name=workbook_two_name, project_id=project_id)
-    # workbook_two_info_json = workbook_two_info.json()
-    # workbook_two_id = workbook_two_info_json["workbook"]["id"]
-
-    # packaged_workbook_three_file_path = r"C:\Users\ArjunNarendra(Quadra\Repos\Quadrant-QHub\DATA-HUB\Data\World Wide Importers Analysis.twbx"
-    # workbook_three_name = "World Wide Importers Analysis"
-
-    # workbook_three_info = conn.publish_workbook(workbook_file_path=packaged_workbook_three_file_path, workbook_name=workbook_three_name, project_id=project_id)
-    # workbook_three_info_json = workbook_three_info.json()
-    # workbook_three_id = workbook_three_info_json["workbook"]["id"]
-
-    # I need to use XML extraction to get worksheet name, visualization title, and visualization type
-    # Use metadata API to get tables used and columns used
-    workbook_file_path = r"C:\Users\ArjunNarendra(Quadra\Project Work\Repos\Quadrant-QHub\DATA-HUB\Workbooks\World Wide Importers Analysis.twb"
+    conn.publish_workbook(workbook_file_path=packaged_workbook_file_path, workbook_name=workbook_name, project_id=project_id, connection_username="PLACEHOLDER", connection_password="PLACEHOLDER")
     workbook_xml_doc = ET.parse(workbook_file_path)
     workbook_worksheets = workbook_xml_doc.findall(".//worksheet")
-    VisualizationInfo = namedtuple("VisualizationInfo", ["WorksheetName", "VisualizationTitle", "VisualizationType", "TablesUsed", "ColumnsUsed"])
     viz_info_list = []
     for worksheet in workbook_worksheets:
         worksheet_name = worksheet.get("name")
@@ -144,11 +123,7 @@ def main():
             (tables_used, columns_used) = get_tables_and_columns(workbook_name=workbook_name, worksheet_name=worksheet_name, connection=conn)
         viz_info = VisualizationInfo(worksheet_name, viz_title, viz_type, tables_used, columns_used)
         viz_info_list.append(viz_info)
-    
-    json_file_path = r"C:\Users\ArjunNarendra(Quadra\Project Work\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\visualization info.json"
-    excel_file_path = r"C:\Users\ArjunNarendra(Quadra\Project Work\Repos\Quadrant-QHub\DATA-HUB\Tableau Analysis\visualization info.xlsx"
-    save_to_json(visualization_info_list=viz_info_list, json_file_path=json_file_path)
-    save_to_excel(visualization_info_list=viz_info_list, excel_file_path=excel_file_path)
-    
-if __name__ == "__main__":
-    main()
+
+def save_viz_info_to_json_and_excel(viz_info: str, json_file_path: str, excel_file_path: str):
+    save_to_json(viz_info, json_file_path)
+    save_to_excel(viz_info, excel_file_path)
